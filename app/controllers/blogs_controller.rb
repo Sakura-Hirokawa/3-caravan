@@ -10,8 +10,17 @@ class BlogsController < ApplicationController
   end
 
   def create
+    blog=Blog.new(blog_paramus)
+    blog.save
+    redirect_to blogs_path
   end
 
   def edit
   end
+
+  private
+  def blog_paramus
+    params.require(:blog).permit(:title,:category,:body)
+  end
+
 end
